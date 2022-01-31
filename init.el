@@ -35,7 +35,8 @@ This function should only modify configuration layer settings."
    '(typescript
      auto-completion
      erlang
-     elixir
+     (elixir :variables
+             elixir-backend 'alchemist)
      emacs-lisp
      (git :variables
           git-magit-status-fullscreen t)
