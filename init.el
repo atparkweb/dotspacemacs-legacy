@@ -227,7 +227,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Initial message in the scratch buffer, such as "Welcome to Spacemacs!"
    ;; (default nil)
-   dotspacemacs-initial-scratch-message nil
+   dotspacemacs-initial-scratch-message "GOOD MORNING, PAUL"
 
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
@@ -535,12 +535,22 @@ See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
 )
 
+(defun atpark-setup-indent (n)
+  ;; web development indentation
+  (setq js-indent-level n)
+  (setq js2-basic-offset n) ; in latest js2mode, this is an alias of js-indent-level
+  (setq web-mode-markup-indent-offset n)
+  (setq web-mode-css-indent-offset n)
+  (setq web-mode-code-indent-offset n)
+  (setq css-indent-offset n))
+
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (atpark-setup-indent 2)
 )
 
 
@@ -558,6 +568,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (add-hook 'after-make-frame-functions (spacemacs/toggle-transparency))
+  (add-hook 'after-make-frame-functions (spacemacs/toggle-frame-fullscreen))
 )
 
 
