@@ -35,6 +35,7 @@ This function should only modify configuration layer settings."
    '(
      auto-completion
      docker
+     graphql
      erlang
      (elixir :variables
              elixir-backend 'alchemist)
@@ -561,6 +562,10 @@ This function is called only while dumping Spacemacs configuration. You can
 dump."
 )
 
+(defun on-after-init ()
+  "This is to have background match terminal otherwise transparency won't work"
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -570,6 +575,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (add-hook 'after-make-frame-functions (spacemacs/toggle-transparency))
   (add-hook 'after-make-frame-functions (spacemacs/toggle-frame-fullscreen))
+  (add-hook 'window-setup-hook 'on-after-init)
 )
 
 
