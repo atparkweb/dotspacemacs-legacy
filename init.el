@@ -35,13 +35,13 @@ This function should only modify configuration layer settings."
    '(
      auto-completion
      docker
-     graphql
      erlang
      (elixir :variables
              elixir-backend 'alchemist)
      emacs-lisp
      (git :variables
           git-magit-status-fullscreen t)
+     graphql
      helm
      html
      javascript
@@ -55,6 +55,7 @@ This function should only modify configuration layer settings."
      python
      (react :variables
             js-indent-level 2)
+     rust
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
@@ -551,6 +552,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq backup-directory-alist `(("." . "~/.emacs_backups"))) ; Keep backup files out of my projects
   (atpark-setup-indent 2)
 )
 
@@ -562,10 +564,10 @@ This function is called only while dumping Spacemacs configuration. You can
 dump."
 )
 
-(defun on-after-init ()
-  "This is to have background match terminal otherwise transparency won't work"
-  (unless (display-graphic-p (selected-frame))
-    (set-face-background 'default "unspecified-bg" (selected-frame))))
+;(defun on-after-init ()
+; "This is to have background match terminal otherwise transparency won't work"
+; (unless (display-graphic-p (selected-frame))
+;   (set-face-background 'default "unspecified-bg" (selected-frame))))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -575,7 +577,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (add-hook 'after-make-frame-functions (spacemacs/toggle-transparency))
   (add-hook 'after-make-frame-functions (spacemacs/toggle-frame-fullscreen))
-  (add-hook 'window-setup-hook 'on-after-init)
+; (add-hook 'window-setup-hook 'on-after-init)
 )
 
 
