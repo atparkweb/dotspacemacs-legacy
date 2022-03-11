@@ -34,6 +34,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(
      auto-completion
+     common-lisp
      docker
      erlang
      (elixir :variables
@@ -56,6 +57,8 @@ This function should only modify configuration layer settings."
      (react :variables
             js-indent-level 2)
      rust
+     (scheme :variables
+             scheme-implementations '(guile racket))
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
@@ -577,6 +580,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (add-hook 'after-make-frame-functions (spacemacs/toggle-transparency))
   (add-hook 'after-make-frame-functions (spacemacs/toggle-frame-fullscreen))
+  (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-common-lisp-mode)
 ; (add-hook 'window-setup-hook 'on-after-init)
 )
 
