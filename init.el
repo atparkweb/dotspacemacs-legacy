@@ -581,6 +581,19 @@ before packages are loaded."
   (add-hook 'after-make-frame-functions (spacemacs/toggle-transparency))
   (add-hook 'after-make-frame-functions (spacemacs/toggle-frame-fullscreen))
   (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-common-lisp-mode)
+
+  (define-key evil-normal-state-map (kbd "-")
+    (lambda ()
+      (interactive)
+      (split-window-vertically)
+      (other-window 1)))
+
+  (define-key evil-normal-state-map (kbd "|")
+    (lambda ()
+      (interactive)
+      (split-window-horizontally)
+      (other-window 1)))
+
 ; (add-hook 'window-setup-hook 'on-after-init)
 )
 
