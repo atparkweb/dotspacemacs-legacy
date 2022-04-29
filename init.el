@@ -543,7 +543,7 @@ See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
 )
 
-(defun atpark-setup-indent (n)
+(defun setup-indent (n)
   ;; web development indentation
   (setq js-indent-level n)
   (setq js2-basic-offset n) ; in latest js2mode, this is an alias of js-indent-level
@@ -552,6 +552,16 @@ See the header of this file for more information."
   (setq web-mode-code-indent-offset n)
   (setq css-indent-offset n))
 
+(defun setup-erc ()
+  (setq
+   erc-nick "bluecentipede"
+   erc-user-full-name "Andy P")
+  (defun libera ()
+    (lambda ()
+      (interactive)
+      (erc :server "web.libera.chat"
+           :port "6667"))))
+
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
@@ -559,7 +569,8 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq backup-directory-alist `(("." . "~/.emacs_backups"))) ; Keep backup files out of my projects
-  (atpark-setup-indent 2)
+  (setup-indent 2)
+  (setup-erc)
 )
 
 
@@ -570,10 +581,10 @@ This function is called only while dumping Spacemacs configuration. You can
 dump."
 )
 
-;(defun on-after-init ()
-; "This is to have background match terminal otherwise transparency won't work"
-; (unless (display-graphic-p (selected-frame))
-;   (set-face-background 'default "unspecified-bg" (selected-frame))))
+(defun on-after-init ()
+ "This is to have background match terminal otherwise transparency won't work"
+ (unless (display-graphic-p (selected-frame))
+   (set-face-background 'default "unspecified-bg" (selected-frame))))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -597,7 +608,7 @@ before packages are loaded."
       (split-window-horizontally)
       (other-window 1)))
 
-; (add-hook 'window-setup-hook 'on-after-init)
+ (add-hook 'window-setup-hook 'on-after-init)
 )
 
 
