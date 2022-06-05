@@ -36,6 +36,7 @@ This function should only modify configuration layer settings."
      auto-completion
      common-lisp
      docker
+     django
      erc
      erlang
      (elixir :variables
@@ -72,6 +73,8 @@ This function should only modify configuration layer settings."
                treemacs-use-scope-type 'Perspectives)
      typescript
      vue
+     (xclipboard :variables
+                xclipboard-enable-cliphist t)
      yaml)
 
 
@@ -553,6 +556,7 @@ See the header of this file for more information."
   (setq css-indent-offset n))
 
 (defun setup-erc ()
+  "IRC Client Setup"
   (setq
    erc-nick "bluecentipede"
    erc-user-full-name "Andy P")
@@ -582,9 +586,10 @@ dump."
 )
 
 (defun on-after-init ()
- "This is to have background match terminal otherwise transparency won't work"
- (unless (display-graphic-p (selected-frame))
-   (set-face-background 'default "unspecified-bg" (selected-frame))))
+  (spacemacs/toggle-fill-column-indicator)
+  "This is to have background match terminal otherwise transparency won't work"
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
