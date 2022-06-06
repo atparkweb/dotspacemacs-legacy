@@ -2,6 +2,7 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -103,6 +104,7 @@ This function should only modify configuration layer settings."
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
    dotspacemacs-install-packages 'used-only))
+
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -538,6 +540,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil then byte-compile some of Spacemacs files.
    dotspacemacs-byte-compile nil))
 
+
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
 This function defines the environment variables for your Emacs session. By
@@ -556,16 +559,6 @@ See the header of this file for more information."
   (setq web-mode-code-indent-offset n)
   (setq css-indent-offset n))
 
-(defun setup-erc ()
-  "IRC Client Setup"
-  (setq
-   erc-nick "bluecentipede"
-   erc-user-full-name "Andy P")
-  (defun libera ()
-    (lambda ()
-      (interactive)
-      (erc :server "web.libera.chat"
-           :port "6667"))))
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -575,7 +568,6 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq backup-directory-alist `(("." . "~/.emacs_backups"))) ; Keep backup files out of my projects
   (setup-indent 2)
-  (setup-erc)
 )
 
 
@@ -586,11 +578,13 @@ This function is called only while dumping Spacemacs configuration. You can
 dump."
 )
 
+
 (defun on-after-init ()
   (spacemacs/toggle-fill-column-indicator)
   "This is to have background match terminal otherwise transparency won't work"
   (unless (display-graphic-p (selected-frame))
     (set-face-background 'default "unspecified-bg" (selected-frame))))
+
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
