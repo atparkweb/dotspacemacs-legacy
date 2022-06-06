@@ -38,7 +38,6 @@ This function should only modify configuration layer settings."
      common-lisp
      docker
      django
-     erc
      erlang
      (elixir :variables
              elixir-backend 'alchemist)
