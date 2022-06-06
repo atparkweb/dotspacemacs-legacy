@@ -55,7 +55,8 @@ This function should only modify configuration layer settings."
      phoenix
      prettier
      prolog
-     python
+     (python :variables
+             python-test-runner 'pytest)
      (react :variables
             js-indent-level 2)
      ruby
